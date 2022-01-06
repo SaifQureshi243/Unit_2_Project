@@ -1,0 +1,87 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <math.h>
+#include <windows.h>
+#include <chrono>
+#include <ctime>
+#include "Header.h"
+
+using namespace std;
+
+int main()
+{
+    //VARIABLES
+    string inputOne, inputThree, inputFour;
+    char finalAnswer, inputSix, inputSeven, inputEight, inputNine, inputTen, inputTwo;
+    int randomNumber, inputFive;
+    bool repeat = true;
+
+    //CALCULATIONS
+    srand(time(0));
+    randomNumber = rand() % 100;
+
+    while (repeat)
+    {
+        auto start = chrono::steady_clock::now();
+        
+        //INPUTS
+        cout << "Question #1:\nWhat Is The Northernmost Country In North America?\n ---> ";
+        cin >> inputOne;
+        cout << checkInputOne(inputOne);
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #2:\nWhat Ocean Is Located Between North America And Europe? (Please Enter The Assinged Character Of The Answer)\nA. North Atlantic\nB. South Atlantic\nC. North Pacific\nD. South Pacific\n ---> ";
+        cout << checkInputTwo(checkIfChar());
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #3:\nWhat Is " << randomNumber << " In Binary?\n ---> ";
+        cin >> inputThree;
+        cout << checkInputThree(inputThree, randomNumber);
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #4:\n(True OR False) On Average, Humans have Less Than Two Natural, Biological Arms (Hint: People With Prosthetics).\n ---> ";
+        cin >> inputFour;
+        cout << checkInputFour(inputFour);
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #5:\nWhat Is The Name Of The Tree Species That Appears In The Canadian Flag? (Please Enter The Assinged Digit Of The Answer)\n1. Pine\n2. Spruce\n3. Maple\n4. Redwood\n ---> ";
+        cout << checkInputFive(checkIfInteger());
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #6:\nWhat Is The Most Common Hair Colour In The World? (Please Enter The Assinged Character Of The Answer)\nA. Red\nB. Black\nC. Brown\nD. Blonde\n ---> ";
+        cout << checkInputSix(checkIfChar());
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #7:\nWhat Is Santa Clauses Other Name? (Please Enter The Assinged Character Of The Answer)\nA. Rudolph\nB. POTUS\nC. The King Of Boxing\nD. Father Christmas\n ---> ";
+        cout << checkInputSeven(checkIfChar());
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #8:\nHow much wood could a woodchuck chuck, if a woodchuck could chuck wood? (Please Enter The Assinged Character Of The Answer)\nA. The language of Swahili\nB. 700lbs\nC. A woodchuck could chuck as much wood as a woodchuck could chuck wood.\nD. Pi (3.14159...)\n ---> ";
+        cout << checkInputEight(checkIfChar());
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #9:\nWhat Is The Most Common Colour Of Healthy Grass? (Please Enter The Assinged Character Of The Answer)\nA. Green\nB. Red\nC. Black\nD. Blue\n ---> ";
+        cout << checkInputNine(checkIfChar());
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n\n";
+        cout << "Question #10:\nWhich Of The Following Is a Prime Number? (Please Enter The Assinged Character Of The Answer)\nA. 1\nB. 7\nC. 4\nD. 6\n ---> ";
+        cout << checkInputTen(checkIfChar());
+        SetConsoleTextAttribute(hConsole, 15);
+        cout << score << "/55\n";
+
+        auto end = chrono::steady_clock::now();
+        double elapsed_time_ns = double(chrono::duration_cast <chrono::nanoseconds> (end - start).count());
+        cout << "Elapsed Time (s): " << elapsed_time_ns / 1e9 << endl;
+
+        cout << "Grade: " << letterGrade(score);
+
+        //REPEAT
+        cout << "Would You Like To Play Again? [y/n]\n";
+        cin >> finalAnswer;
+        cout << "\n";
+        system("CLS");
+        repeat = finalAnswer == 'y';
+    }
+    cout << "Thank you, goodbye" << endl;
+}
